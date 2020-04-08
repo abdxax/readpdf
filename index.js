@@ -13,15 +13,23 @@ prs(pdffile).then(data=>{
     */
     let arr= ['Carbon','Carbon pricing','carbon tax','Catastrophe','Clean','Climate','climate risk reporting','Coal','cop21 paris agreement','Corporate social responsibility (CSR)','Disaster','Emission','Energy','Energy Efficiency','Environment','Environmental, Social and Governance (ESG)','Greenhouse','Low carbon economy','Methane','Oil','paris accord','paris agreement','paris climate agreement','Renewable','Resiliency','Resilience','Resilient','sasb standards','Sustainability (Sustain)','sustainability accounting','sustainable finance','Task Force on Climate-related Financial Disclosures (TCFD)','tcfd','tcfd framework','tcfd recommendations','tcfd reporting','Weather'];
 for(let i=0;i<arr.length;i++){
-    if(text.includes(arr[i])){
-      let regex=/arr[i]/gmi;
-      let times=text.split(regex).length -1;
-      console.log(arr[i]+" : "+times);
-     
+    let numbers=0;
+    if(text.includes(arr[i].toLowerCase())){
+      let reg=new RegExp(arr[i].toLowerCase(),"gmi");
+      let number=text.split(reg).length -1;
+      numbers+=number;
+     // console.log(arr[i]+" : "+number)
+    }
+     if (text.includes(arr[i])){
+        let reg=new RegExp(arr[i].toLowerCase(),"gmi");
+        let number2=text.split(reg).length -1;
+        numbers+=number2;
+        //console.log(arr[i]+" : "+number)  
     }
     else{
-        console.log( arr[i]+" : "+0);
+        //console.log( arr[i]+" : "+0);
     }
+    console.log(arr[i]+" : "+numbers)
 }
 
 }).catch(error=>{
